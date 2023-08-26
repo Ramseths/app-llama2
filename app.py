@@ -10,6 +10,8 @@ def greet(name):
 # )
 
 languages = ['JavaScript', 'Python', 'C++']
+functions = ['Rosenbrock', 'Rastrigin']
+algorithm = ['Particle Swarm Optimization', 'Artificial Bee Colony', 'Differential Evolution']
 
 with gr.Blocks() as demo:
     with gr.Row():
@@ -17,7 +19,8 @@ with gr.Blocks() as demo:
     with gr.Row():
         textArea = gr.Textbox(label='Enter the code topic:', lines = 4)
     with gr.Row():
-        language = gr.Dropdown(languages, multiselect=False)
+        language = gr.Dropdown(languages, label = '', multiselect=False)
+        function = gr.Dropdown(languages, multiselect=False)
     with gr.Row():
         with gr.Column(scale=1, min_width=600):
             text1 = gr.Textbox(label="prompt 1")

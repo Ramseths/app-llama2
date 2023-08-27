@@ -3,6 +3,9 @@
 Llama 2 was pretrained on publicly available online data sources.
 The fine-tuned model, Llama Chat, leverages publicly available instruction datasets and over 1 million human annotations.
 
+## 🚀 App
+![img](img/app.png)
+
 ## 🎯 Features
 
 - Story Generator with different genres 

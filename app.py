@@ -1,4 +1,5 @@
 import gradio as gr
+from model import getResponse
 
 def greet(name):
     return "Hello " + name + "!"
@@ -9,28 +10,20 @@ def greet(name):
 #     outputs="text",
 # )
 
-languages = ['JavaScript', 'Python', 'C++']
-functions = ['Rosenbrock', 'Rastrigin']
-algorithms = ['Particle Swarm Optimization', 'Artificial Bee Colony', 'Differential Evolution']
+genres = ['Romance', 'Comedy', 'Horror', 'Fantasy']
+
 
 with gr.Blocks() as demo:
     with gr.Row():
-        title = gr.Label('Evolutionary Computation - Code Generation 🧬💻')
+        title = gr.Label('Story Generation with Llama 2 📝💻')
     with gr.Row():
-        textArea = gr.Textbox(label='Enter the code topic:', lines = 4)
+        story = gr.Textbox(label='Enter the Story Topic:', lines = 2)
     with gr.Row():
-        language = gr.Dropdown(languages, label = 'Programming Languages', multiselect=False)
-        function = gr.Dropdown(functions, label = 'Function', multiselect=False)
-        algorithm = gr.Dropdown(algorithms, label = 'Algorithms', multiselect=False)
+        genre = gr.Dropdown(genres, label = 'Story Genre', multiselect=False)
+        character = gr.Textbox(placeholder = 'Name',label = 'Main Character')
     with gr.Row():
-        btn_generate = gr.Button("Generate")
-        with gr.Column(scale=1, min_width=600):
-            text1 = gr.Textbox(label="prompt 1")
-            text2 = gr.Textbox(label="prompt 2")
-            inbtw = gr.Button("Between")
-            text4 = gr.Textbox(label="prompt 1")
-            text5 = gr.Textbox(label="prompt 2")
-        with gr.Column(scale=2, min_width=600):
-            btn = gr.Button("Go")
-
+        output = gr.Textbox(label = 'Story:')
+        btn = gr.Button("Generate")
+        btn.click(fn = getResponse, inputs = [story, genre, character], outputs = output)
+            
 demo.launch()

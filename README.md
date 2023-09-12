@@ -1,4 +1,4 @@
-# 💻 Story Generation with Llama 7B 
+# 💻 Story Generation with Llama 7B Chat
 
 Llama 2 was pretrained on publicly available online data sources.
 The fine-tuned model, Llama Chat, leverages publicly available instruction datasets and over 1 million human annotations.
